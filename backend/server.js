@@ -25,6 +25,14 @@ const allowedOrigins = [
   'http://127.0.0.1:4173'
 ];
 
+console.log('Allowed Origins:', process.env.ORIGIN);
+
+app.use(cors({
+  origin: process.env.ORIGIN,
+  credentials: true
+}));
+
+/*
 app.use(
   cors({
     origin: function (origin, callback) {
@@ -37,6 +45,7 @@ app.use(
     credentials: true
   })
 );
+*/
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {
