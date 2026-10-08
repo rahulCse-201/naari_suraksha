@@ -1,0 +1,21 @@
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App.jsx';
+import './index.css';
+import { registerSW } from 'virtual:pwa-register';
+
+// Register Service Worker for PWA Android support
+const updateSW = registerSW({
+  onNeedRefresh() {
+    console.log('New Naari Suraksha PWA version available.');
+  },
+  onOfflineReady() {
+    console.log('Naari Suraksha PWA ready for standalone offline app shell.');
+  },
+});
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
